@@ -1,0 +1,244 @@
+/* General Body and Typography */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; /* Remove body padding if container handles it */
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px; /* Adjusted for a potentially more compact form */
+    margin: 20px auto; /* Add some margin around the container */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    color: #333;
+    margin-top: 0; /* Often good to reset top margin for headings in sections */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Adds a subtle line under section titles */
+    padding-bottom: 10px;
+}
+
+/* Form Sections and Fieldsets */
+.form-section,
+.map-section,
+.results-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd; /* Kept from original */
+    border-radius: 5px; /* Kept from original */
+    background-color: #f9f9f9; /* Kept from original */
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0 10px;
+    margin-left: 5px; /* Adjust as needed */
+    color: #0056b3;
+}
+
+.form-divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 30px 0; /* More distinct separation */
+}
+
+/* Form Controls Grouping and Individual Controls */
+.form-controls-group {
+    margin-bottom: 18px; /* Consistent spacing for each group */
+}
+
+.form-controls-group label {
+    display: block;
+    margin-bottom: 6px; /* Space between label and input */
+    font-weight: bold;
+}
+
+.form-controls-group input[type="text"],
+.form-controls-group input[type="number"] {
+    width: 100%; /* Take full width of the parent */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Essential for 100% width with padding */
+}
+
+/* Specific button attached to an input */
+.form-controls-group button {
+    margin-top: 8px; /* Space it from input if on new line, or style for inline */
+}
+
+
+/* Buttons Styling */
+button, input[type="button"] /* General button styling */ {
+    padding: 10px 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Default right margin for multiple buttons */
+}
+
+button:last-child, input[type="button"]:last-child {
+    margin-right: 0; /* No margin for the last button in a group */
+}
+
+button:hover, input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+button:disabled, input[type="button"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Action Buttons for the form */
+.form-actions {
+    margin-top: 25px;
+    text-align: left; /* Or center/right as preferred */
+}
+
+.form-actions button {
+   /* Add specific styling if different from general buttons */
+}
+
+
+/* Map Section Specifics */
+.map-mode-buttons {
+    margin-bottom: 15px;
+    text-align: center; /* Center mode buttons */
+}
+
+.map-mode-buttons button {
+   /* Style for side-by-side if desired, or ensure they wrap nicely */
+}
+
+#map, #routeMap {
+    height: 400px; /* Consistent height for main map */
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Space below map */
+}
+
+#routeMap {
+    height: 300px; /* As per original */
+}
+
+.route-map-label {
+    margin-top:15px;
+    font-weight: bold;
+    display: none; /* Controlled by JS */
+    margin-bottom: 5px;
+}
+
+/* Results Section Specifics */
+.results-section p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.results-section span {
+    font-weight: bold;
+    color: #333; /* Slightly less stark than pure blue for values */
+    background-color: #e9ecef; /* Subtle background for values */
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+
+/* Active Mode Button (from original, good) */
+button.active-mode {
+    background-color: #28a745;
+    font-weight: bold;
+}
+
+button.active-mode:hover {
+    background-color: #1f7a34;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+
+    /* Make form controls and buttons full width for smaller screens */
+    .form-controls-group input[type="text"],
+    .form-controls-group input[type="number"],
+    .form-controls-group button,
+    .form-actions button {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px; /* Space between stacked elements */
+    }
+    .form-actions button:last-child,
+    .form-controls-group button:last-child {
+        margin-bottom: 0;
+    }
+
+
+    .map-mode-buttons button {
+        width: calc(50% - 5px); /* Two buttons side-by-side with a small gap */
+        margin-bottom: 10px;
+    }
+    .map-mode-buttons button:nth-child(odd) {
+        margin-right: 10px;
+    }
+     .map-mode-buttons button:nth-child(even) {
+        margin-right: 0px;
+    }
+
+     /* If you want map mode buttons to stack on small screens: */
+
+    .map-mode-buttons button {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .map-mode-buttons button:last-child {
+        margin-bottom: 0;
+    }
+
+    #map, #routeMap {
+        height: 300px; /* Adjust map height for smaller screens */
+    }
+}

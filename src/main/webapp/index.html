@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Service - Estimate & Book</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <style>
+        /* Basic styling for hidden input fields to ensure they don't take up visual space if not needed */
+        input[type="hidden"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Courier Service - Estimate & Book</h1>
+
+    <section class="form-section">
+        <h2>Parcel Details</h2>
+        <form id="courierForm">
+            <fieldset>
+                <legend>Pickup Information</legend>
+                <div class="form-controls-group">
+                    <label for="pickupAddress">Address (Optional, use map for precision):</label>
+                    <input type="text" id="pickupAddress" name="pickupAddress">
+                    <button type="button" onclick="geocodeAddress('pickup')">Find Pickup on Map</button>
+                </div>
+                <div class="form-controls-group">
+                    <label for="pickupDigiPin">Pickup DigiPin:</label>
+                    <input type="text" id="pickupDigiPin" name="pickupDigiPin" readonly>
+                    <input type="hidden" id="pickupLat">
+                    <input type="hidden" id="pickupLng">
+                </div>
+            </fieldset>
+
+            <hr class="form-divider">
+
+            <fieldset>
+                <legend>Delivery Information</legend>
+                <div class="form-controls-group">
+                    <label for="deliveryAddress">Address (Optional, use map for precision):</label>
+                    <input type="text" id="deliveryAddress" name="deliveryAddress">
+                    <button type="button" onclick="geocodeAddress('delivery')">Find Delivery on Map</button>
+                </div>
+                <div class="form-controls-group">
+                    <label for="deliveryDigiPin">Delivery DigiPin:</label>
+                    <input type="text" id="deliveryDigiPin" name="deliveryDigiPin" readonly>
+                    <input type="hidden" id="deliveryLat">
+                    <input type="hidden" id="deliveryLng">
+                </div>
+            </fieldset>
+
+            <hr class="form-divider">
+
+            <fieldset>
+                <legend>Parcel Specifications</legend>
+                <div class="form-controls-group">
+                    <label for="parcelWeight">Parcel Weight (kg):</label>
+                    <input type="number" id="parcelWeight" name="parcelWeight" step="0.1" min="0.1">
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="button" onclick="getEstimation()">Get Estimation</button>
+                <button type="button" onclick="bookParcel()">Book Parcel</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="map-section">
+        <h2>Select Locations on Map</h2>
+        <p>Click on the map to set Pickup or Delivery location. Use the buttons below to switch modes.</p>
+        <div class="map-mode-buttons">
+            <button type="button" id="setPickupModeBtn" onclick="setMapMode('pickup')">Set Pickup Location</button>
+            <button type="button" id="setDeliveryModeBtn" onclick="setMapMode('delivery')">Set Delivery Location</button>
+        </div>
+        <div id="map"></div>
+    </section>
+
+    <section class="results-section">
+        <h2>Estimation & Booking Status</h2>
+        <p>Estimated Price: <span id="estimatedPrice">N/A</span></p>
+        <p>Route Information: <span id="routeInfo">N/A</span></p>
+        <p>Booking Status: <span id="bookingStatus">N/A</span></p>
+        <div id="routeMapLabel" class="route-map-label">Route Visualization:</div>
+        <div id="routeMap"></div>
+    </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script src="js/script.js"></script>
+</body>
+</html>
